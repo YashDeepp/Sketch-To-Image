@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sketch to Image 2</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <script type="text/javascript" src="{{url_for('static',filename='js/index.js')}}"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <link
+      class="jsbin"
+      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+      <style>
+      article,
+      aside,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      .heading{
+font-size: 40px;
+padding-top: 20px;
+text-align: center;
+}
+
+.image{
+padding-top: 20px;
+  padding-right: 60px;
+}
+body{
+  background-color:#98DBC6;
+}
+.object{
+  font-size: 20px;
+  line-height: 40px;
+  font-family: sans-serif;
+  margin-left:50px;
+  margin-right: 50px;
+}
+.button{
+  background-color: white;
+  color:black;
+  text-align: center;
+  text-decoration: none;
+  border:none;
+  border-radius: 10px;
+  cursor:pointer;
+  padding-left:30px;
+  padding-right: 30px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  margin-left:150px;
+  margin-top:20px;
+}
+button
+{
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+    </style>
+
+
+  <script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah').attr('src', e.target.result).height(100);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }</script>
+  </head>
+  <body>
+ <h2 class="heading">Sketch to Image</h2>
+    <div class="first">
+
+      <table>
+        <tr>
+          <td>
+
+            <p class="object">
+              Sketch to Image using conditional generative adversial network and deploying it in a webpage through flask. Convert your ordinary sketches into alluring  pieces using the sketch to image converter.
+            </p>
+          </td>
+          <td>
+            <img class="image" src="static/pics/imgonline-com-ua-twotoone-5MFM2gbhDjK.jpg" alt="Dog's sketch"height="300px">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+  <form class="form-horizontal" action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+          <div >
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd" onchange="readURL(this);">
+          </div>
+          <div>
+        <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+  </form>
+    <section>
+        <div class="row">
+            <div class="one col-lg-4"><img src="{{user_image}}" alt="OK"></div>
+            <div class="one col-lg-4"><img src="{{prediction}}" alt=""></div>
+        </div>
+    </section>
+
+
+  </body>
+</html>
